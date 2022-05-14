@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SwiftUI中消除NavigationLink自带右边小箭头的方法, The Blog of LGDS">
-    <meta name="description" content="SwiftUI中消除NavigationLink自带右边小箭头的方法在SwiftUI中使用NavigationLink总是会在最右边有一个指示性箭头，如下图
+    <meta name="keywords" content="SwiftUI中消除NavigationLink自带右边小箭头的方法, 乐观的神的博客">
+    <meta name="description" content="SwiftUI 中消除 NavigationLink 自带右边小箭头的方法在 SwiftUI 中使用 NavigationLink 总是会在最右边有一个指示性箭头，如下图
 struct ContentView: View &amp;#123;
-    var b">
+  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +21,7 @@ struct ContentView: View &amp;#123;
 
     
 
-    <title>SwiftUI中消除NavigationLink自带右边小箭头的方法 | The Blog of LGDS</title>
+    <title>SwiftUI中消除NavigationLink自带右边小箭头的方法 | 乐观的神的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -46,7 +46,7 @@ struct ContentView: View &amp;#123;
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">The Blog of LGDS</span>
+                    <span class="logo-span">乐观的神的博客</span>
                 </a>
             </div>
             
@@ -123,7 +123,7 @@ struct ContentView: View &amp;#123;
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">The Blog of LGDS</div>
+        <div class="logo-name">乐观的神的博客</div>
         <div class="logo-desc">
             
             Never really desperate, only the lost of the soul.
@@ -420,14 +420,14 @@ struct ContentView: View &amp;#123;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-14
+                    2022-05-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    252
+                    262
                 </div>
                 
 
@@ -452,12 +452,12 @@ struct ContentView: View &amp;#123;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SwiftUI中消除NavigationLink自带右边小箭头的方法"><a href="#SwiftUI中消除NavigationLink自带右边小箭头的方法" class="headerlink" title="SwiftUI中消除NavigationLink自带右边小箭头的方法"></a>SwiftUI中消除NavigationLink自带右边小箭头的方法</h1><p>在SwiftUI中使用NavigationLink总是会在最右边有一个指示性箭头，如下图</p>
+                <h1 id="SwiftUI-中消除-NavigationLink-自带右边小箭头的方法"><a href="#SwiftUI-中消除-NavigationLink-自带右边小箭头的方法" class="headerlink" title="SwiftUI 中消除 NavigationLink 自带右边小箭头的方法"></a>SwiftUI 中消除 NavigationLink 自带右边小箭头的方法</h1><p>在 SwiftUI 中使用 NavigationLink 总是会在最右边有一个指示性箭头，如下图</p>
 <pre class="line-numbers language-swift" data-language="swift"><code class="language-swift"><span class="token keyword">struct</span> <span class="token class-name">ContentView</span><span class="token punctuation">:</span> <span class="token class-name">View</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">var</span> body<span class="token punctuation">:</span> <span class="token keyword">some</span> <span class="token class-name">View</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">NavigationView</span> <span class="token punctuation">&#123;</span>
             <span class="token class-name">List</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">..&lt;</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> index <span class="token keyword">in</span>
-                <span class="token class-name">NavigationLink</span><span class="token punctuation">(</span>destination<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"hi"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token punctuation">&#123;</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">index</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span> 
+                <span class="token class-name">NavigationLink</span><span class="token punctuation">(</span>destination<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"hi"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token punctuation">&#123;</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">index</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
             <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
 
@@ -482,15 +482,15 @@ struct ContentView: View &amp;#123;
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>最重要的是NavigationLink的opacity设为0</strong></p>
+<p><strong>最重要的是 NavigationLink 的 opacity 设为 0</strong></p>
 <p>效果如下：</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/3bb71b219f64a2ca7671310ebb8bccd8.png" alt="image-20211009203855170"></p>
-<h2 id="SwiftUI中消除NavigationLink自带右边小箭头的方法-1"><a href="#SwiftUI中消除NavigationLink自带右边小箭头的方法-1" class="headerlink" title="SwiftUI中消除NavigationLink自带右边小箭头的方法"></a>SwiftUI中消除NavigationLink自带右边小箭头的方法</h2><p>在SwiftUI中使用NavigationLink总是会在最右边有一个指示性箭头，如下图</p>
+<h2 id="SwiftUI-中消除-NavigationLink-自带右边小箭头的方法-1"><a href="#SwiftUI-中消除-NavigationLink-自带右边小箭头的方法-1" class="headerlink" title="SwiftUI 中消除 NavigationLink 自带右边小箭头的方法"></a>SwiftUI 中消除 NavigationLink 自带右边小箭头的方法</h2><p>在 SwiftUI 中使用 NavigationLink 总是会在最右边有一个指示性箭头，如下图</p>
 <pre class="line-numbers language-swift" data-language="swift"><code class="language-swift"><span class="token keyword">struct</span> <span class="token class-name">ContentView</span><span class="token punctuation">:</span> <span class="token class-name">View</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">var</span> body<span class="token punctuation">:</span> <span class="token keyword">some</span> <span class="token class-name">View</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">NavigationView</span> <span class="token punctuation">&#123;</span>
             <span class="token class-name">List</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">..&lt;</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> index <span class="token keyword">in</span>
-                <span class="token class-name">NavigationLink</span><span class="token punctuation">(</span>destination<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"hi"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token punctuation">&#123;</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">index</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span> 
+                <span class="token class-name">NavigationLink</span><span class="token punctuation">(</span>destination<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"hi"</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token punctuation">&#123;</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">index</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
             <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
 
@@ -515,7 +515,7 @@ struct ContentView: View &amp;#123;
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>最重要的是NavigationLink的opacity设为0</strong></p>
+<p><strong>最重要的是 NavigationLink 的 opacity 设为 0</strong></p>
 <p>效果如下：</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/3bb71b219f64a2ca7671310ebb8bccd8.png" alt="image-20211009203855170"></p>
 
@@ -758,7 +758,7 @@ struct ContentView: View &amp;#123;
 
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
-            + '来源: The Blog of LGDS<br />'
+            + '来源: 乐观的神的博客<br />'
             + '文章作者: 乐观的神<br />'
             + '文章链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
