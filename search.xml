@@ -4,26 +4,230 @@
   
     
     <entry>
-      <title>a</title>
-      <link href="/a/2022/05/14/"/>
-      <url>/a/2022/05/14/</url>
+      <title>树莓派安装ubuntu系统并更新apt源</title>
+      <link href="/shu-mei-pai-an-zhuang-ubuntu-xi-tong-bing-geng-xin-apt-yuan/2022/05/14/"/>
+      <url>/shu-mei-pai-an-zhuang-ubuntu-xi-tong-bing-geng-xin-apt-yuan/2022/05/14/</url>
       
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> raspberry pi </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> raspberry pi </tag>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
       
     </entry>
     
     
     
     <entry>
-      <title>test</title>
-      <link href="/test/2022/05/14/"/>
-      <url>/test/2022/05/14/</url>
+      <title>树莓派安装泰拉瑞亚服务器并使用frp穿透</title>
+      <link href="/shu-mei-pai-an-zhuang-tai-la-rui-ya-fu-wu-qi-bing-shi-yong-frp-chuan-tou/2022/02/26/"/>
+      <url>/shu-mei-pai-an-zhuang-tai-la-rui-ya-fu-wu-qi-bing-shi-yong-frp-chuan-tou/2022/02/26/</url>
       
-        <content type="html"><![CDATA[<p>this is a test<br>hello, hexo</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="树莓派安装泰拉瑞亚服务器并使用frp穿透"><a href="#树莓派安装泰拉瑞亚服务器并使用frp穿透" class="headerlink" title="树莓派安装泰拉瑞亚服务器并使用frp穿透"></a>树莓派安装泰拉瑞亚服务器并使用frp穿透</h1><h2 id="1-树莓派配置"><a href="#1-树莓派配置" class="headerlink" title="1.树莓派配置"></a>1.树莓派配置</h2><ul><li>raspberry pi 4b 4g</li><li>系统为ubuntu 20.04 64bit for raspi</li></ul><h2 id="2-下载泰拉瑞亚服务端"><a href="#2-下载泰拉瑞亚服务端" class="headerlink" title="2.下载泰拉瑞亚服务端"></a>2.下载泰拉瑞亚服务端</h2><p><a href="https://terraria.fandom.com/zh/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务端下载地址</a></p><p>使用wget下载Terraria Server 1.4.1.2</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://terraria.org/api/download/pc-dedicated-server/terraria-server-1432.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>解压</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> terraria-server-1432.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>移动到&#x2F;opt</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mv</span> <span class="token number">1432</span>/ /opt/terraria<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>进入对应目录并增加可执行权限</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /opt/terraria/Linux<span class="token function">sudo</span> <span class="token function">chmod</span> u+x TerrariaS*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="3-安装Net运行时环境mono"><a href="#3-安装Net运行时环境mono" class="headerlink" title="3.安装Net运行时环境mono"></a>3.安装Net运行时环境mono</h2><p>参照<a href="https://www.mono-project.com/download/stable/#download-lin">mono官网说明</a></p><p>将mono仓库加入系统</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gnupg ca-certificates<span class="token function">sudo</span> apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF<span class="token builtin class-name">echo</span> <span class="token string">"deb https://download.mono-project.com/repo/ubuntu stable-focal main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/mono-official-stable.list<span class="token function">sudo</span> <span class="token function">apt</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>安装mono</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> mono-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="4-运行泰拉瑞亚服务端程序"><a href="#4-运行泰拉瑞亚服务端程序" class="headerlink" title="4.运行泰拉瑞亚服务端程序"></a>4.运行泰拉瑞亚服务端程序</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mono TerrariaServer.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>PS：</p><ul><li><p>若出现以下错误</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Your mono runtime and class libraries are out of sync. The out of <span class="token function">sync</span> library is: /opt/terraria/Linux/System.dll<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>则<code>sudo rm /opt/terraria/Linux/System.dll</code>即可</p></li><li><p>默认World文件在<code>~/.local/share/terraria</code>中</p></li></ul><h2 id="附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚"><a href="#附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚" class="headerlink" title="附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚"></a>附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚</h2><p>起因：本来泰拉瑞亚服务端挂在腾讯云服务器上，但是这个服务器只有1核1G，因此经常宕机，所以想到了将服务端运行在树莓派上，利用frp内网穿透，从而能够实现公网访问泰拉瑞亚服务器</p><p>服务器和树莓派都使用如下命令下载并解压frp</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_arm64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>frp的配置参照<a href="https://gofrp.org/docs/examples/ssh/">frp官方文档</a></p><ul><li><p>服务器</p><p>修改frps.ini文件</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>common<span class="token punctuation">]</span>bind_port <span class="token operator">=</span> <span class="token number">7000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>树莓派</p><p>修改frpc.ini文件</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>common<span class="token punctuation">]</span>server_addr <span class="token operator">=</span> x.x.x.xserver_port <span class="token operator">=</span> <span class="token number">7000</span><span class="token punctuation">[</span>ssh<span class="token punctuation">]</span><span class="token builtin class-name">type</span> <span class="token operator">=</span> tcplocal_ip <span class="token operator">=</span> <span class="token number">127.0</span>.0.1local_port <span class="token operator">=</span> <span class="token number">22</span>remote_port <span class="token operator">=</span> <span class="token number">6000</span><span class="token punctuation">[</span>terraria<span class="token punctuation">]</span><span class="token builtin class-name">type</span> <span class="token operator">=</span> tcplocal_ip <span class="token operator">=</span> <span class="token number">127.0</span>.0.1local_port <span class="token operator">=</span> <span class="token number">7777</span>remote_port <span class="token operator">=</span> <span class="token number">6010</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><p>同时需要开放腾讯云服务器的7000、6000、6010端口（其中，6000端口用于远程ssh登录树莓派，6010端口用于连接泰拉瑞亚服务器）</p><p>因此，连接泰拉瑞亚服务器时，<strong>ip为x.x.x.x，端口为6010</strong></p>]]></content>
       
       
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> raspberry pi </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> raspberry pi </tag>
+            
+            <tag> frp </tag>
+            
+            <tag> game </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>玩转OpenWrt系列——ShadowSocksR Plus+</title>
+      <link href="/wan-zhuan-openwrt-xi-lie-shadowsocksr-plus/2022/02/25/"/>
+      <url>/wan-zhuan-openwrt-xi-lie-shadowsocksr-plus/2022/02/25/</url>
+      
+        <content type="html"><![CDATA[<h1 id="玩转OpenWrt系列——ShadowSocksR-Plus"><a href="#玩转OpenWrt系列——ShadowSocksR-Plus" class="headerlink" title="玩转OpenWrt系列——ShadowSocksR Plus+"></a>玩转OpenWrt系列——ShadowSocksR Plus+</h1><h2 id="一、ShadowSocksR-Plus"><a href="#一、ShadowSocksR-Plus" class="headerlink" title="一、ShadowSocksR Plus+"></a>一、ShadowSocksR Plus+</h2><p>ShadowSocksR Plus+别名酸酸乳Plus，支持 SS&#x2F;SSR&#x2F;V2RAY&#x2F;XRAY&#x2F;TROJAN&#x2F;NAIVEPROXY&#x2F;SOCKS5&#x2F;TUN 等大多数协议，使用简单，且对CPU性能要求较低，兼容绝大多数网站</p><h2 id="二、酸酸乳Plus配置"><a href="#二、酸酸乳Plus配置" class="headerlink" title="二、酸酸乳Plus配置"></a>二、酸酸乳Plus配置</h2><h3 id="1-新增服务器节点"><a href="#1-新增服务器节点" class="headerlink" title="1.新增服务器节点"></a>1.新增服务器节点</h3><p>1）通过机场订阅链接添加</p><p>在服务器节点页面填写机场订阅链接，依次点击更新订阅URL列表、保存并应用、更新所有订阅服务器节点，如下</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251630666.png" alt="image-20220225163028598"></p><p>2）通过节点链接新增</p><p>点击左下角新增，然后点击导入配置信息，填写节点链接后保存并应用</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251632638.png" alt="image-20220225163237607"></p><p>3）通过填写节点属性添加</p><p>点击左下角新增，填写节点各项属性，然后点击保存并应用</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251634608.png" alt="image-20220225163433578"></p><h3 id="2-设置客户端属性"><a href="#2-设置客户端属性" class="headerlink" title="2.设置客户端属性"></a>2.设置客户端属性</h3><p>在客户端页面中，选择一个主服务器，设置DNS解析方式与服务器，然后保存并应用</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251638707.png" alt="image-20220225163824676"></p><h3 id="3-高级设置"><a href="#3-高级设置" class="headerlink" title="3.高级设置"></a>3.高级设置</h3><p>在高级设置页面，打开自动切换和广告屏蔽，设置检查周期、GFW更新URL、广告屏蔽更新URL，然后保存并应用如下</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251640461.png" alt="image-20220225164044435"></p><h3 id="4-更新数据库"><a href="#4-更新数据库" class="headerlink" title="4.更新数据库"></a>4.更新数据库</h3><p>在状态页面中，点击更新GFW列表、国内IP段、广告屏蔽数据库</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251642902.png" alt="image-20220225164209870"></p><h2 id="三、配合SmartDNS使用"><a href="#三、配合SmartDNS使用" class="headerlink" title="三、配合SmartDNS使用"></a>三、配合SmartDNS使用</h2><h3 id="1-Lan口DNS服务器设置"><a href="#1-Lan口DNS服务器设置" class="headerlink" title="1.Lan口DNS服务器设置"></a>1.Lan口DNS服务器设置</h3><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251645887.png" alt="image-20220225164539852"></p><h3 id="2-SmartDNS设置"><a href="#2-SmartDNS设置" class="headerlink" title="2.SmartDNS设置"></a>2.SmartDNS设置</h3><p>首先需要关闭所有科学上网插件以及DNS插件</p><p>设置DNS上游服务器，如下</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251647988.png" alt="image-20220225164739952"></p><p>常规设置如下</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251651225.png" alt="image-20220225165127199"></p><p>第二DNS服务器设置如下</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251650011.png" alt="image-20220225165031976"></p><h3 id="3-酸酸乳Plus设置"><a href="#3-酸酸乳Plus设置" class="headerlink" title="3.酸酸乳Plus设置"></a>3.酸酸乳Plus设置</h3><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202251653032.png" alt="image-20220225165307985"></p><h2 id="四、DNS解析流程的实验"><a href="#四、DNS解析流程的实验" class="headerlink" title="四、DNS解析流程的实验"></a>四、DNS解析流程的实验</h2><p>实验结论：<strong>SSR+解析国内域名时使用OpenWrt集成的Dnsmasq服务器</strong>，因此需要将SmartDNS重定向为dnsmasq的上游服务器；<strong>当解析国外域名时，使用在SSR+页面设置的DNS解析方式</strong>，因此将SmartDNS第二服务器端口设为5335，SSR+DNS解析方式设为使用本机端口为5335的DNS服务。</p><p>实验过程：</p><ol><li>关闭SmartDNS第一服务器，使用<code>nslookup 国内域名</code>时无法返回服务器ip地址（该国内域名需要是为被缓存过的），因此可以判定，SSR+解析国内域名时使用OpenWrt集成的Dnsmasq服务器。</li><li>关闭SmartDNS第二服务器，使用<code>nslookup 国外域名</code>时无法返回服务器ip地址（该国外域名需要是为被缓存过的），因此可以判定，SSR+解析国外域名时使用在SSR+页面设置的DNS解析方式。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> openwrt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> openwrt </tag>
+            
+            <tag> shadowsocksr plus+ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>玩转OpenWrt系列——SmartDNS</title>
+      <link href="/wan-zhuan-openwrt-xi-lie-smartdns/2022/02/24/"/>
+      <url>/wan-zhuan-openwrt-xi-lie-smartdns/2022/02/24/</url>
+      
+        <content type="html"><![CDATA[<h1 id="玩转OpenWrt系列——SmartDNS"><a href="#玩转OpenWrt系列——SmartDNS" class="headerlink" title="玩转OpenWrt系列——SmartDNS"></a>玩转OpenWrt系列——SmartDNS</h1><h2 id="一、DNS"><a href="#一、DNS" class="headerlink" title="一、DNS"></a>一、DNS</h2><p>DNS即为域名解析系统，能够将域名解析为IP地址，从而访问服务器。</p><p>通常情况下如果在设备或者路由器上未指定 DNS 服务器则默认使用运营商的DNS解析，也就是自动获取DNS服务器。但是这些DNS服务器可能抽风或则会包含大量广告，因此我们可以使用一些第三方的纯净DNS服务器。</p><p>国内常用DNS服务器：</p><ol><li><p>114 DNS</p><p>国内用户数多的DNS服务器，高速，电信联通移动全国通用DNS，能引导您到最快的网站，手机和计算机都可用<br>稳定 DNS解析成功率超高，与ISP的DNS相比，能访问更多的国内外网站。</p><p>纯净、无劫持、无广告或粗俗网站<br>DNS 地址：114.114.114.114 和 114.114.115.115</p><p>拦截 钓鱼病毒木马网站 增强网银、证券、购物、游戏、隐私信息安全<br>DNS 地址：114.114.114.119 和 114.114.115.119</p><p>学校或家长可选拦截色情网站、保护少年儿童免受网络色情内容的毒害<br>DNS 地址：114.114.114.110 和 114.114.115.110</p></li><li><p>阿里 DNS</p><p>阿里公共DNS是阿里巴巴集团推出的DNS递归解析系统，目标是成为国内互联网基础设施的组成部分，面向互联网用户提供“快速”、“稳定”、“智能”的免费DNS递归解析服务。</p><p>DNS 地址：223.5.5.5，223.6.6.6，2400:3200::1，2400:3200:baba::1</p></li><li><p>腾讯 DNS</p><p>国内独家支持国密 SM2 DoH，腾讯 DNS 是由 DNSpod提供的 DNS 服务，称有安全零劫持、准确不丢包、快速无等待、稳定多容灾的优势。解析精准，没有劫持，最最牛逼的是支持 Google ECS(edns-client-subnet) 协议，在使用 DNSPod 公共 DNS 时的解析准确度仅受各家DNS的IP库准确度影响，不再依赖于后端递归节点的部署情况。</p><p>DNS 地址：119.29.29.29，2402:4e00::</p></li><li><p>DNS 派</p><p>DNS 派旨在为用户提供一个高速、稳定、安全的上网环境。</p><p>DNS 地址：101.226.4.6(电信)，123.125.81.6(联通)，101.226.4.6(移动)，101.226.4.6(铁通)</p></li><li><p>Google DNS</p><p>由于懂得都懂的原因，使用谷歌DNS国内网站访问很慢。</p><p>DNS地址：8.8.8.8和8.8.4.4</p></li><li><p>OpenDNS</p><p>同样是国外DNS服务提供商</p><p>DNS 地址：208.67.222.222，208.67.220.220</p></li></ol><h2 id="二、SmartDNS"><a href="#二、SmartDNS" class="headerlink" title="二、SmartDNS"></a>二、SmartDNS</h2><p><a href="https://pymumu.github.io/smartdns/#faq">SmartDNS官方网站</a></p><p>SmartDNS是一个运行在本地的DNS服务器，SmartDNS接受本地客户端的DNS查询请求，从多个上游DNS服务器获取DNS查询结果，并将访问速度最快的结果返回给客户端，提高网络访问速度。 同时支持指定特定域名IP地址，并高性匹配，达到过滤广告的效果。与dnsmasq的all-servers不同，smartdns返回的是访问速度最快的解析结果。</p><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol><li>多DNS上游服务器<br>支持配置多个上游DNS服务器，并同时进行查询，即使其中有DNS服务器异常，也不会影响查询。</li><li>返回最快IP地址<br>支持从域名所属IP地址列表中查找到访问速度最快的IP地址，并返回给客户端，提高网络访问速度。</li><li>支持多种查询协议<br>支持UDP，TCP，TLS, HTTPS查询，以及非53端口查询。</li><li>特定域名IP地址指定<br>支持指定域名的IP地址，达到广告过滤效果，避免恶意网站的效果。</li><li>域名高性能后缀匹配<br>支持域名后缀匹配模式，简化过滤配置，过滤20万条记录时间&lt;1ms</li><li>域名分流<br>支持域名分流，不同类型的域名到不同的DNS服务器查询。</li><li>Linux&#x2F;Windows多平台支持<br>支持标准Linux系统（树莓派），openwrt系统各种固件，华硕路由器原生固件。以及支持Windows 10 WSL (Windows Subsystem for Linux)。</li><li>支持IPV4, IPV6双栈<br>支持IPV4，IPV6网络，支持查询A, AAAA记录，支持双栈IP速度优化，并支持完全禁用IPV6 AAAA解析。</li><li>高性能，占用资源少<br>多线程异步IO模式，cache缓存查询结果。</li></ol><h2 id="三、SmartDNS配置"><a href="#三、SmartDNS配置" class="headerlink" title="三、SmartDNS配置"></a>三、SmartDNS配置</h2><p><strong>未完全理解该插件运作机制，只是根据我的尝试得出的教程</strong></p><ol><li><p>新增上游DNS服务器</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202240009098.png" alt="image-20220224000931004"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202240010035.png" alt="image-20220224001018014"></p></li><li><p>设置第一和第二DNS服务器</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202240012895.png" alt="image-20220224001250868"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202240013114.png" alt="image-20220224001344078"></p></li><li><p>检测是否配置成功</p><ul><li><p>方法一：使用<code>nslookup -querytype=ptr smartdns</code>查询域名<br>看命令结果中的<code>name</code>项目是否显示为<code>smartdns</code>或<code>主机名</code>，如<code>smartdns</code>则表示生效</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nslookup</span> -querytype<span class="token operator">=</span>ptr smartdnsServer:<span class="token number">192.168</span>.2.2Address:<span class="token number">192.168</span>.2.2<span class="token comment">#53</span>Non-authoritative answer:smartdnsname <span class="token operator">=</span> smartdns.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>方法二：使用<code>nslookup</code>查询<code>www.baidu.com</code>域名，查看结果中百度的IP地址是否<code>只有一个</code>，如有多个IP地址返回，则表示未生效，请多尝试几个域名检查。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">nslookup</span> baidu.com <span class="token number">192.168</span>.2.2Server:<span class="token number">192.168</span>.2.2Address:<span class="token number">192.168</span>.2.2<span class="token comment">#53</span>Non-authoritative answer:Name:baidu.comAddress: <span class="token number">220.181</span>.38.251<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul></li></ol><h2 id="四、PassWall设置"><a href="#四、PassWall设置" class="headerlink" title="四、PassWall设置"></a>四、PassWall设置</h2><p>在基本设置中，设置DNS属性如下</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202240019904.png" alt="image-20220224001916848"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> openwrt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> openwrt </tag>
+            
+            <tag> smartdns </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>玩转OpenWrt系列——PassWall</title>
+      <link href="/wan-zhuan-openwrt-xi-lie-passwall/2022/02/22/"/>
+      <url>/wan-zhuan-openwrt-xi-lie-passwall/2022/02/22/</url>
+      
+        <content type="html"><![CDATA[<h1 id="玩转OpenWrt系列——PassWall"><a href="#玩转OpenWrt系列——PassWall" class="headerlink" title="玩转OpenWrt系列——PassWall"></a>玩转OpenWrt系列——PassWall</h1><h2 id="一、PassWall作用及好处"><a href="#一、PassWall作用及好处" class="headerlink" title="一、PassWall作用及好处"></a>一、PassWall作用及好处</h2><p>软路由一个很重要的功能就是能够支持局域网内科学上网。OpenWrt拥有很多插件能够满足我们科学上网的需求，比如PassWall、OpenClash、SSR-Plus等，这几款插件的速度主要取决于软路由硬件以及机场的质量，因此<strong>占用小、dns更加稳定</strong>的PassWall是个很好的选择。</p><h2 id="二、PassWall设置"><a href="#二、PassWall设置" class="headerlink" title="二、PassWall设置"></a>二、PassWall设置</h2><ol><li><p>在基本设置中打开主开关，然后保存并应用</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231134102.png" alt="image-20220223113427078"></p></li><li><p>添加节点，有三种方法：</p><p><strong>1）通过机场订阅链接自动新增节点（推荐）</strong></p><p>在节点订阅选项卡中，点击左下角添加按钮，然后填入机场备注以及订阅链接（一般机场都会给不同类型的订阅链接），然后保存并应用。</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231138787.png" alt="image-20220223113837765"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231140603.png" alt="image-20220223114048574"></p><p>点击手动订阅后选择节点进行订阅</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231143403.png" alt="image-20220223114334377"></p><p><strong>2）通过链接手动添加节点（推荐）</strong></p><p>在节点列表选项卡中点击通过链接添加节点，之后填入节点链接，点击添加即可</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231146203.png" alt="image-20220223114646182"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231147687.png" alt="image-20220223114718658"></p><p><strong>3）手动设置属性添加节点（不推荐）</strong></p><p>在节点列表选项卡中点击添加按钮，然后点击保存并应用</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231149168.png" alt="image-20220223114926136"></p><p>填写节点属性</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231151964.png" alt="image-20220223115110936"></p></li><li><p>在基本设置选项卡中设置TCP节点和UDP节点，其中UDP节点用于代理游戏流量，然后点击保存并应用即可</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231259594.png" alt="image-20220223125902568"></p></li><li><p>在运行状态中测试是否能够链接谷歌和github</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231300682.png" alt="image-20220223130026657"></p><p>PS：若谷歌链接多次点击后仍连接失败，则考虑节点不连通，更换节点后再次尝试</p></li><li><p>在自动切换选项卡，启用自动切换，并设置切换节点，然后保存并应用</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231303787.png" alt="image-20220223130342765"></p></li><li><p>在规则列表设置直连列表和代理列表，有些网站可能想走直连但是走了代理导致无法访问（比如云服务器），可以在这设置</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231306833.png" alt="image-20220223130630806"></p></li></ol><h2 id="三、网络测试"><a href="#三、网络测试" class="headerlink" title="三、网络测试"></a>三、网络测试</h2><p>播放youtube的4K视屏能达到63000+kbps</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202231309348.png" alt="image-20220223130907291"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> openwrt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> openwrt </tag>
+            
+            <tag> passwall </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>玩转OpenWrt系列——旁路由设置</title>
+      <link href="/wan-zhuan-openwrt-xi-lie-pang-lu-you-she-zhi/2022/02/20/"/>
+      <url>/wan-zhuan-openwrt-xi-lie-pang-lu-you-she-zhi/2022/02/20/</url>
+      
+        <content type="html"><![CDATA[<h1 id="玩转-OpenWrt-系列——旁路由设置"><a href="#玩转-OpenWrt-系列——旁路由设置" class="headerlink" title="玩转 OpenWrt 系列——旁路由设置"></a>玩转 OpenWrt 系列——旁路由设置</h1><h2 id="一、旁路由"><a href="#一、旁路由" class="headerlink" title="一、旁路由"></a>一、旁路由</h2><p>旁路由正式名称为旁路网关，是指挂靠在主路由网络下的旁系网络，分担了一部分路由器的功能。</p><p>旁路由作用：</p><ol><li>主路由硬件配置过低，无法承当过大压力时，可由旁路由分担压力，优化网络体验</li><li>在不影响现有网络的情况下，扩展新的功能</li><li>能够通过各种插件扩展功能，丰富上网体验</li></ol><h2 id="二、硬件设备"><a href="#二、硬件设备" class="headerlink" title="二、硬件设备"></a>二、硬件设备</h2><p>Raspberry Pi 4B 4G（当然可以是其他软路由设备）、网线、MacBook</p><h2 id="三、网络拓扑示意图"><a href="#三、网络拓扑示意图" class="headerlink" title="三、网络拓扑示意图"></a>三、网络拓扑示意图</h2><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220327176.png" alt="image-20220222032755138"></p><p>所有移动设备的信息都发往旁路由进行处理后，在发给主路由，主路由在发送到互联网。</p><h2 id="四、安装过程"><a href="#四、安装过程" class="headerlink" title="四、安装过程"></a>四、安装过程</h2><h3 id="1-下载固件"><a href="#1-下载固件" class="headerlink" title="1.下载固件"></a>1.下载固件</h3><p>根据软路由设备的型号，可以去<a href="https://openwrt.org/toh/views/toh_fwdownload">官方网站</a>下载对应固件，也可以去找大佬编译好的插件丰富的固件。</p><p>我使用的是 immortalwrt 版本的固件，里面针对国人做了特殊的优化，且配有好看直接的图形化界面。<a href="https://storage.openwrt.cc/snapshots/targets/bcm27xx/bcm2711/immortalwrt-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz">下载地址</a></p><p>PS：由于 squashfs 格式为只读，因此 squashfs 版本相比于 ext4 版本多了恢复默认设置的功能</p><h3 id="2-刷入固件"><a href="#2-刷入固件" class="headerlink" title="2.刷入固件"></a>2.刷入固件</h3><p>使用 balenaEtcher 将下载好的固件刷入 tf 卡中。</p><h3 id="3-旁路由设置"><a href="#3-旁路由设置" class="headerlink" title="3.旁路由设置"></a>3.旁路由设置</h3><p>1）启动树莓派，并用网线连接树莓派和电脑（可以不连，带有 wifi 功能的软路由设备会产生一个 Openwrt 的热点，直接连接这个热点也行）。</p><p>2）用浏览器打开<a href="192.168.1.1">192.168.1.1</a>，用户名 root，密码 password（具体根据你下载的固件给的用户名和密码），登录 OpenWrt 管理界面，如下图。</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220231621.png" alt="image-20220222023144565"></p><p>3）进入网络——接口，点击 lan（eth0）的修改按键，操作流程如下：</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220234628.png" alt="image-20220222023455597"></p><p>修改如下：</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220239132.png" alt="image-20220222023902107"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220241050.png" alt="image-20220222024110029"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220242854.png" alt="image-20220222024215827"></p><p>修改点：</p><ol><li>设置旁路由 ip 及网关 ip</li><li>关闭桥接</li><li>关闭旁路由 dhcp</li></ol><p><strong>然后点击右下角保存并应用，不用等待，直接进行下一步</strong></p><p>4）更改电脑 ip，使其与旁路由在同一网段</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220246753.png" alt="image-20220222024614711"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220247783.png" alt="image-20220222024737745"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220248962.png" alt="image-20220222024809929"></p><p><strong>点击应用</strong>，此时电脑与旁路由在同一网段。</p><p>5）浏览器打开<a href="192.168.2.2">192.168.2.2(旁路由 ip 地址)</a>，再次进入 OpenWrt 管理界面。进行如下设置，然后点击保存与应用即可</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220252980.png" alt="image-20220222025219950"></p><p>ip 动态伪装即位 wan 口的 nat 设置</p><p>6）用网线将树莓派与主路由 lan 口连接</p><h3 id="4-移动设备设置"><a href="#4-移动设备设置" class="headerlink" title="4.移动设备设置"></a>4.移动设备设置</h3><p>移动设备（手机、电脑等）连接主路由的 wifi，进行如下设置</p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220309915.png" alt="image-20220222030900876"></p><p><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202202220307074.png" alt="image-20220222030726985"></p><p>修改点：</p><ol><li>配置 ip 为手动，ip 地址随意设置（与主路由同一网段，且无冲突即可），路由器设为旁路由 ip</li><li>设置 dns 服务器为旁路由 ip 地址</li></ol><h2 id="五、安装完成"><a href="#五、安装完成" class="headerlink" title="五、安装完成"></a>五、安装完成</h2><p>此时安装已经完成。即使旁路由宕机也不会造成主路由网络的无法使用，只会影响进行更改过的设备。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> openwrt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenWrt </tag>
+            
+            <tag> 旁路由 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>树莓派入门初体验</title>
+      <link href="/shu-mei-pai-ru-men-chu-ti-yan/2021/11/17/"/>
+      <url>/shu-mei-pai-ru-men-chu-ti-yan/2021/11/17/</url>
+      
+        <content type="html"><![CDATA[<h3 id="树莓派入门初体验"><a href="#树莓派入门初体验" class="headerlink" title="树莓派入门初体验"></a>树莓派入门初体验</h3><h4 id="1-准备的东西"><a href="#1-准备的东西" class="headerlink" title="1.准备的东西"></a>1.准备的东西</h4><p>树莓派的板子、16G以上的tf卡、读卡器、电源以及电脑（我使用Mac）</p><h4 id="2-下载系统镜像并烧录"><a href="#2-下载系统镜像并烧录" class="headerlink" title="2.下载系统镜像并烧录"></a>2.下载系统镜像并烧录</h4><p>去<a href="https://www.raspberrypi.com/software/operating-systems/">树莓派官网</a>下载镜像</p><img src="https://cdn.jsdelivr.net/gh/lgds-01/picture@main/uPic/image-20211117183102224.png" alt="image-20211117183102224" style="zoom:33%;" /><p>一共三种选择，其中前两种带有桌面，能够通过VNC连接到系统桌面。我喜欢命令行界面，因此下载第三个lite镜像（它是真的小）</p><p>下载完成后使用balenaEtcher(Mac端)将镜像烧录到tf卡中</p><h4 id="3-开启ssh登陆以及配置wifi"><a href="#3-开启ssh登陆以及配置wifi" class="headerlink" title="3.开启ssh登陆以及配置wifi"></a>3.开启ssh登陆以及配置wifi</h4><p>打开烧录完成的盘，进入boot目录，新建ssh文件<strong>（文件叫ssh，没有扩展名或后缀）</strong></p><p>继续在boot目录下新建<strong>wpa_supplicant.conf</strong>文件，编辑其内容如下</p><pre class="line-numbers language-none"><code class="language-none">country&#x3D;CNctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdevupdate_config&#x3D;1 network&#x3D;&#123;ssid&#x3D;&quot;WiFi-A&quot;psk&#x3D;&quot;12345678&quot;key_mgmt&#x3D;WPA-PSKpriority&#x3D;1&#125; network&#x3D;&#123;ssid&#x3D;&quot;WiFi-B&quot;psk&#x3D;&quot;12345678&quot;key_mgmt&#x3D;WPA-PSKpriority&#x3D;2scan_ssid&#x3D;1&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>其中</p><ul><li>ssid为wifi名字</li><li>psk是wifi密码，如果没有密码，不加这一行</li><li>priority是连接优先级</li><li>key_mgmt是使用的加密协议，使用WEP加密填NONE，使用WPA&#x2F;WPA2加密填WPA-PSK（一般都是这个）</li><li>scan_ssid:连接隐藏WiFi时需要指定该值为1</li></ul><h4 id="4-通过ssh连接到树莓派"><a href="#4-通过ssh连接到树莓派" class="headerlink" title="4.通过ssh连接到树莓派"></a>4.通过ssh连接到树莓派</h4><p>通过ssh连接需要知道树莓派的ip地址，下面有几种方式来连接</p><ol><li><p>使用<code>ssh pi@raspberrypi.local</code>命令连接，无需知道树莓派的ip地址，需要一定的扫描ip时间，要等一会</p></li><li><p>登陆路由器后台网站，找到树莓派的ip地址，由于我是校园网，这个对我无效</p></li><li><p>用手机或者电脑开热点，将第三步的wifi设置设为热点的名字和密码，从而能够从手机或者电脑中获得树莓派ip地址</p><p><img src="https://cdn.jsdelivr.net/gh/lgds-01/picture@main/uPic/image-20211117185533736.png" alt="image-20211117185533736"></p></li><li><p>当电脑和树莓派连在同一局域网下，使用<code>arp -a</code>命令能够找到树莓派ip</p></li></ol><p>找到ip后，利用命令<code>ssh pi@ip</code>登陆树莓派，默认密码为raspberry</p><h4 id="5-更换apt源为清华源"><a href="#5-更换apt源为清华源" class="headerlink" title="5.更换apt源为清华源"></a>5.更换apt源为清华源</h4><p>按照<a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">清华大学Raspbian 镜像使用帮助</a>，将&#x2F;etc&#x2F;apt&#x2F;sources.list更改为以下内容</p><pre class="line-numbers language-none"><code class="language-none">deb http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; buster main non-free contrib rpideb-src http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; buster main non-free contrib rpi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>将&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;raspi.list更改为以下内容</p><pre class="line-numbers language-none"><code class="language-none">deb http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspberrypi&#x2F; buster main ui<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>然后使用下列命令更新apt</p><pre class="line-numbers language-none"><code class="language-none">sudo apt updatesudo apt upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> raspberry pi </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> raspberry pi </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>flask+gunicorn+nginx部署全流程</title>
+      <link href="/flask-gunicorn-nginx-bu-shu-quan-liu-cheng/2021/11/14/"/>
+      <url>/flask-gunicorn-nginx-bu-shu-quan-liu-cheng/2021/11/14/</url>
+      
+        <content type="html"><![CDATA[<h2 id="flask-gunicorn-nginx部署全流程"><a href="#flask-gunicorn-nginx部署全流程" class="headerlink" title="flask+gunicorn+nginx部署全流程"></a>flask+gunicorn+nginx部署全流程</h2><h3 id="一、准备flask项目"><a href="#一、准备flask项目" class="headerlink" title="一、准备flask项目"></a>一、准备flask项目</h3><p>test.py文件内容如下</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flaskapp <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/test/&lt;name>'</span><span class="token punctuation">)</span><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">return</span> <span class="token string">"hello, &#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="二、配置nginx"><a href="#二、配置nginx" class="headerlink" title="二、配置nginx"></a>二、配置nginx</h3><p>进入nginx配置文件，可以用<code>locate nginx.conf</code>命令查询位置</p><p>在server中增加一个loaction，如下</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">location ^~ /data/ <span class="token punctuation">&#123;</span>         proxy_pass http://127.0.0.1:8010/<span class="token punctuation">;</span>         proxy_set_header Host <span class="token variable">$host</span><span class="token punctuation">;</span>         proxy_set_header X-Forwaeded-For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>完成修改后，使用命令<code>systemctl restart nginx</code>重启nginx服务，使得更改后的配置生效</strong></p><p>注意事项：</p><ol><li><p><strong>^&#x3D; 表示url以某个常规字符串开头</strong>，即为匹配url路径，例如host:port&#x2F;data&#x2F;a&#x2F;b&#x2F;c,host:port&#x2F;data&#x2F;d.txt均能被上述规则匹配</p></li><li><p>proxy_pass 最后一个&#x2F;加与不加，作用不同</p><ul><li><p>若为proxy_pass <a href="http://127.0.0.1:8010/">http://127.0.0.1:8010/</a>   最后有&#x2F;</p><p>访问host:port&#x2F;data&#x2F;a&#x2F;b.txt，则代理到<a href="http://127.0.0.1:8080/a/b.txt">http://127.0.0.1:8080/a/b.txt</a></p></li><li><p>若为proxy_pass <a href="http://127.0.0.1:8010/">http://127.0.0.1:8010</a>  最后没有&#x2F;</p><p>访问host:port&#x2F;data&#x2F;a&#x2F;b.txt，则代理到<a href="http://127.0.0.1:8080/data/a/b.txt">http://127.0.0.1:8080/data/a/b.txt</a></p></li></ul><p>具体情况可以自行百度</p></li></ol><h3 id="三、利用gunicorn后台运行flask"><a href="#三、利用gunicorn后台运行flask" class="headerlink" title="三、利用gunicorn后台运行flask"></a>三、利用gunicorn后台运行flask</h3><p>使用下述命令运行flask,需要<strong>在flask项目所在文件夹</strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> gunicorn -w <span class="token number">4</span> -b <span class="token number">127.0</span>.0.1:8010 test:app <span class="token operator">></span> test.log <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>命令解释:</p><ul><li>nohup 不挂断运行命令</li><li>gunicorn  test:app   test是flask项目的python文件名<ul><li>-w 进程数量</li><li>-b 监听地址和端口 <strong>需要和nginx配置中的相同</strong></li></ul></li><li>&gt;  test.log 日志信息重定向到test.log</li><li>&amp; 后台运行程序</li></ul><h3 id="四、访问网址"><a href="#四、访问网址" class="headerlink" title="四、访问网址"></a>四、访问网址</h3><p>访问host:port&#x2F;data&#x2F;test&#x2F;lgds</p><p><img src="https://img-blog.csdnimg.cn/img_convert/934ce123d2435ae600f22ae2637f59ff.png" alt="image-20211017204611026"></p><h3 id="五、结束gunicorn进程"><a href="#五、结束gunicorn进程" class="headerlink" title="五、结束gunicorn进程"></a>五、结束gunicorn进程</h3><p>使用<code>kill -9 进程号</code>命令即可，进程号可以使用<code>ps -aux | grep gunicorn</code>查询</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> flask </tag>
+            
+            <tag> nginx </tag>
+            
+        </tags>
       
     </entry>
     
