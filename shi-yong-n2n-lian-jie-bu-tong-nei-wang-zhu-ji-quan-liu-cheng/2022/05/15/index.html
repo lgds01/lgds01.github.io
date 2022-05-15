@@ -4,13 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="树莓派安装泰拉瑞亚服务器并使用frp穿透, 乐观的神的博客">
-    <meta name="description" content="树莓派安装泰拉瑞亚服务器并使用frp穿透1.树莓派配置
-raspberry pi 4b 4g
-系统为ubuntu 20.04 64bit for raspi
+    <meta name="keywords" content="使用N2N连接不同内网主机全流程, 乐观的神的博客">
+    <meta name="description" content="使用 N2N 连接不同内网主机全流程n2n 原理n2n 有两种节点，分别为超级节点(super node)和边缘节点(edge node)。
 
-2.下载泰拉瑞亚服务端服务端下载地址
-使用wget下载Terraria Serv">
+超级节点：它允许边缘节点宣布和发现其他节点。它必须有一个可在 Internet 上公开访问的端口">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +21,7 @@ raspberry pi 4b 4g
 
     
 
-    <title>树莓派安装泰拉瑞亚服务器并使用frp穿透 | 乐观的神的博客</title>
+    <title>使用N2N连接不同内网主机全流程 | 乐观的神的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -270,12 +267,12 @@ raspberry pi 4b 4g
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.bing.com/th?id=A70801551b14d73cb708e57b1d971dea0&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.bing.com/th?id=OIP.tpQSVfGr-MjlTjHFOGJWyQHaE7&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">树莓派安装泰拉瑞亚服务器并使用frp穿透</h1>
+                    <h1 class="description center-align post-title">使用N2N连接不同内网主机全流程</h1>
                 </div>
             </div>
         </div>
@@ -391,16 +388,8 @@ raspberry pi 4b 4g
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/raspberry-pi/">
-                                <span class="chip bg-color">raspberry pi</span>
-                            </a>
-                        
-                            <a href="/tags/frp/">
-                                <span class="chip bg-color">frp</span>
-                            </a>
-                        
-                            <a href="/tags/game/">
-                                <span class="chip bg-color">game</span>
+                            <a href="/tags/n2n/">
+                                <span class="chip bg-color">n2n</span>
                             </a>
                         
                     </div>
@@ -415,10 +404,6 @@ raspberry pi 4b 4g
                                 experiment
                             </a>
                         
-                            <a href="/categories/raspberry-pi/" class="post-category">
-                                raspberry pi
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -428,7 +413,7 @@ raspberry pi 4b 4g
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-26
+                    2022-05-15
                 </div>
                 
 
@@ -442,14 +427,14 @@ raspberry pi 4b 4g
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    520
+                    828
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -467,77 +452,51 @@ raspberry pi 4b 4g
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="树莓派安装泰拉瑞亚服务器并使用frp穿透"><a href="#树莓派安装泰拉瑞亚服务器并使用frp穿透" class="headerlink" title="树莓派安装泰拉瑞亚服务器并使用frp穿透"></a>树莓派安装泰拉瑞亚服务器并使用frp穿透</h1><h2 id="1-树莓派配置"><a href="#1-树莓派配置" class="headerlink" title="1.树莓派配置"></a>1.树莓派配置</h2><ul>
-<li>raspberry pi 4b 4g</li>
-<li>系统为ubuntu 20.04 64bit for raspi</li>
-</ul>
-<h2 id="2-下载泰拉瑞亚服务端"><a href="#2-下载泰拉瑞亚服务端" class="headerlink" title="2.下载泰拉瑞亚服务端"></a>2.下载泰拉瑞亚服务端</h2><p><a target="_blank" rel="noopener" href="https://terraria.fandom.com/zh/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务端下载地址</a></p>
-<p>使用wget下载Terraria Server 1.4.1.2</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://terraria.org/api/download/pc-dedicated-server/terraria-server-1432.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>解压</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> terraria-server-1432.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>移动到&#x2F;opt</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mv</span> <span class="token number">1432</span>/ /opt/terraria<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>进入对应目录并增加可执行权限</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /opt/terraria/Linux
-<span class="token function">sudo</span> <span class="token function">chmod</span> u+x TerrariaS*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="3-安装Net运行时环境mono"><a href="#3-安装Net运行时环境mono" class="headerlink" title="3.安装Net运行时环境mono"></a>3.安装Net运行时环境mono</h2><p>参照<a target="_blank" rel="noopener" href="https://www.mono-project.com/download/stable/#download-lin">mono官网说明</a></p>
-<p>将mono仓库加入系统</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gnupg ca-certificates
-<span class="token function">sudo</span> apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-<span class="token builtin class-name">echo</span> <span class="token string">"deb https://download.mono-project.com/repo/ubuntu stable-focal main"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/mono-official-stable.list
-<span class="token function">sudo</span> <span class="token function">apt</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>安装mono</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> mono-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="4-运行泰拉瑞亚服务端程序"><a href="#4-运行泰拉瑞亚服务端程序" class="headerlink" title="4.运行泰拉瑞亚服务端程序"></a>4.运行泰拉瑞亚服务端程序</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mono TerrariaServer.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>PS：</p>
+                <h1 id="使用-N2N-连接不同内网主机全流程"><a href="#使用-N2N-连接不同内网主机全流程" class="headerlink" title="使用 N2N 连接不同内网主机全流程"></a>使用 N2N 连接不同内网主机全流程</h1><h2 id="n2n-原理"><a href="#n2n-原理" class="headerlink" title="n2n 原理"></a>n2n 原理</h2><p>n2n 有两种节点，分别为超级节点(super node)和边缘节点(edge node)。</p>
 <ul>
-<li><p>若出现以下错误</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Your mono runtime and class libraries are out of sync. The out of <span class="token function">sync</span> library is: /opt/terraria/Linux/System.dll<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>则<code>sudo rm /opt/terraria/Linux/System.dll</code>即可</p>
-</li>
-<li><p>默认World文件在<code>~/.local/share/terraria</code>中</p>
-</li>
+<li>超级节点：它允许边缘节点宣布和发现其他节点。它必须有一个可在 Internet 上公开访问的端口(<strong>具有公网 IP</strong>)。</li>
+<li>边缘节点：将成为虚拟网络一部分的节点</li>
 </ul>
-<h2 id="附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚"><a href="#附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚" class="headerlink" title="附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚"></a>附加：利用腾讯云服务器和frp，从公网访问泰拉瑞亚</h2><p>起因：本来泰拉瑞亚服务端挂在腾讯云服务器上，但是这个服务器只有1核1G，因此经常宕机，所以想到了将服务端运行在树莓派上，利用frp内网穿透，从而能够实现公网访问泰拉瑞亚服务器</p>
-<p>服务器和树莓派都使用如下命令下载并解压frp</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_arm64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>frp的配置参照<a target="_blank" rel="noopener" href="https://gofrp.org/docs/examples/ssh/">frp官方文档</a></p>
+<p>n2n 中多个边缘节点之间共享的虚拟网络称为社区。单个超级节点可以中继多个社区，一台计算机可以同时成为多个社区的一部分。边缘节点可以使用加密密钥来加密其社区内的数据包。</p>
+<p>当第一次连接时，需要通过超级节点来建立边缘节点之间的点对点连接，当这不可能时，将<strong>通过超级节点中继数据包</strong>。</p>
+<p>根据官方的说明，可能由于特殊的 NAT 设备导致不能进行点对点连接，而使用超级节点中继时，超级节点的带宽就决定了传输速率。</p>
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>n2n 目前有三种版本,并且官方不提供二进制文件，需要自己进行编译。三种版本之间不可混用，即要使用相同版本的 super node 和 edge node。</p>
 <ul>
-<li><p>服务器</p>
-<p>修改frps.ini文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>common<span class="token punctuation">]</span>
-bind_port <span class="token operator">=</span> <span class="token number">7000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>树莓派</p>
-<p>修改frpc.ini文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>common<span class="token punctuation">]</span>
-server_addr <span class="token operator">=</span> x.x.x.x
-server_port <span class="token operator">=</span> <span class="token number">7000</span>
-
-<span class="token punctuation">[</span>ssh<span class="token punctuation">]</span>
-<span class="token builtin class-name">type</span> <span class="token operator">=</span> tcp
-local_ip <span class="token operator">=</span> <span class="token number">127.0</span>.0.1
-local_port <span class="token operator">=</span> <span class="token number">22</span>
-remote_port <span class="token operator">=</span> <span class="token number">6000</span>
-
-<span class="token punctuation">[</span>terraria<span class="token punctuation">]</span>
-<span class="token builtin class-name">type</span> <span class="token operator">=</span> tcp
-local_ip <span class="token operator">=</span> <span class="token number">127.0</span>.0.1
-local_port <span class="token operator">=</span> <span class="token number">7777</span>
-remote_port <span class="token operator">=</span> <span class="token number">6010</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>v1: <a target="_blank" rel="noopener" href="https://github.com/meyerd/n2n/tree/master/n2n_v1">https://github.com/meyerd/n2n/tree/master/n2n_v1</a> （版本号是 v.1.x.x）</li>
+<li>v2: <a target="_blank" rel="noopener" href="https://github.com/ntop/n2n">https://github.com/ntop/n2n</a> （版本号是 v.2.x.x）</li>
+<li>v2s: <a target="_blank" rel="noopener" href="https://github.com/meyerd/n2n/tree/master/n2n_v2">https://github.com/meyerd/n2n/tree/master/n2n_v2</a> （版本号是 v.2.1.0）德国大佬写的 n2n v2 分支，非官方版本。</li>
+<li>v3: <a target="_blank" rel="noopener" href="https://github.com/ntop/n2n">https://github.com/ntop/n2n</a> （版本号是 v.3.x.x) 官方正在维护</li>
 </ul>
-<p>同时需要开放腾讯云服务器的7000、6000、6010端口（其中，6000端口用于远程ssh登录树莓派，6010端口用于连接泰拉瑞亚服务器）</p>
-<p>因此，连接泰拉瑞亚服务器时，<strong>ip为x.x.x.x，端口为6010</strong></p>
+<p>此次使用 n2n v2 版本，因为这是官方版本，且一直在维护。使用<a target="_blank" rel="noopener" href="https://github.com/lucktu/n2n">lucktu 编译的二进制文件</a></p>
+<h2 id="服务端设置"><a href="#服务端设置" class="headerlink" title="服务端设置"></a>服务端设置</h2><p>服务端为 ubuntu 环境。使用如下命令搭建 super node。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 下载n2n_v2_linux_x64版本</span>
+<span class="token function">wget</span> https://github.com/lucktu/n2n/blob/master/Linux/n2n_v3_linux_x64_v3.1.1-16_r1200_all_by_heiye.rar
+<span class="token comment"># 解压</span>
+<span class="token function">unzip</span> n2n_v2_linux_x64_v2.7.0_r525_all_by_heiye.zip
+<span class="token comment"># 增加可执行权限</span>
+<span class="token builtin class-name">cd</span> n2n_v2_linux_x64_v2.7.0_r525_Bstatic_by_heiye/
+<span class="token function">chmod</span> u+x edge supernode
+<span class="token comment"># 服务端监听6789端口</span>
+supernode -l <span class="token number">6789</span>
+<span class="token comment"># 服务端也当作客户端使用，将服务端也加入虚拟网络(可选)</span>
+edge -a <span class="token number">10.0</span>.0.10 -c <span class="token builtin class-name">test</span> -k <span class="token number">12345</span> -l 超级节点公网IP:6789 -v -f
+<span class="token comment"># -a 虚拟网络ip</span>
+<span class="token comment"># -c 社区名称</span>
+<span class="token comment"># -k 社区密钥</span>
+<span class="token comment"># -l 超级节点公网ip:port</span>
+<span class="token comment"># -v -f 可视化debug输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>记得打开服务器的 6789 端口。</p>
+<h2 id="windows-客户端设置"><a href="#windows-客户端设置" class="headerlink" title="windows 客户端设置"></a>windows 客户端设置</h2><p>使用<a target="_blank" rel="noopener" href="https://github.com/dwj0/n2n-gui-for-windows">dwj0 编写的 gui 软件</a>简化操作。根据 readme 操作即可。<br>注意点：<br>开启后使用<code>ipconfig/all</code>查看是否有如下配置<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202205152019417.png"><br>同时网络管理中心也多出来对应的虚拟网卡<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202205152019410.png"><br>如果发现网卡地址和填写的虚拟网络 ip 地址不一样，则需要到网络管理中心进行如下操作：<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202205152023686.jpg"></p>
+<h2 id="命令行客户端设置"><a href="#命令行客户端设置" class="headerlink" title="命令行客户端设置"></a>命令行客户端设置</h2><p>需要下载<a target="_blank" rel="noopener" href="https://github.com/lucktu/n2n/blob/master/Linux/n2n_v3_linux_x64_v3.1.1-16_r1200_all_by_heiye.rar">lucktu 编译的二进制文件</a>，使用如下命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">edge -a <span class="token number">10.0</span>.0.14 -c <span class="token builtin class-name">test</span> -k <span class="token number">12345</span> -l 超级节点公网IP:6789 -v -f
+<span class="token comment"># -a 虚拟网络ip</span>
+<span class="token comment"># -c 社区名称</span>
+<span class="token comment"># -k 社区密钥</span>
+<span class="token comment"># -l 超级节点公网ip:port</span>
+<span class="token comment"># -v -f 可视化debug输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="验证是否成功连接"><a href="#验证是否成功连接" class="headerlink" title="验证是否成功连接"></a>验证是否成功连接</h2><p>使用<code>ping 虚拟网络ip</code>命令即可，若能 ping 通，则两台主机之间联通。</p>
 
                 
             </div>
@@ -564,7 +523,7 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://lgds01.github.io/shu-mei-pai-an-zhuang-tai-la-rui-ya-fu-wu-qi-bing-shi-yong-frp-chuan-tou/2022/02/26/">https://lgds01.github.io/shu-mei-pai-an-zhuang-tai-la-rui-ya-fu-wu-qi-bing-shi-yong-frp-chuan-tou/2022/02/26/</a>
+                    <a href="https://lgds01.github.io/shi-yong-n2n-lian-jie-bu-tong-nei-wang-zhu-ji-quan-liu-cheng/2022/05/15/">https://lgds01.github.io/shi-yong-n2n-lian-jie-bu-tong-nei-wang-zhu-ji-quan-liu-cheng/2022/05/15/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -602,16 +561,8 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/raspberry-pi/">
-                                    <span class="chip bg-color">raspberry pi</span>
-                                </a>
-                            
-                                <a href="/tags/frp/">
-                                    <span class="chip bg-color">frp</span>
-                                </a>
-                            
-                                <a href="/tags/game/">
-                                    <span class="chip bg-color">game</span>
+                                <a href="/tags/n2n/">
+                                    <span class="chip bg-color">n2n</span>
                                 </a>
                             
                         </div>
@@ -659,9 +610,10 @@ remote_port <span class="token operator">=</span> <span class="token number">601
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/shi-yong-n2n-lian-jie-bu-tong-nei-wang-zhu-ji-quan-liu-cheng/2022/05/15/">
                     <div class="card-image">
@@ -678,9 +630,9 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -693,6 +645,7 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -711,12 +664,12 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/wan-zhuan-openwrt-xi-lie-shadowsocksr-plus/2022/02/25/">
+                <a href="/shu-mei-pai-an-zhuang-tai-la-rui-ya-fu-wu-qi-bing-shi-yong-frp-chuan-tou/2022/02/26/">
                     <div class="card-image">
                         
-                        <img src="https://www.bing.com/th?id=A1ba231a56ad20209624792bc0ced04d5&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM" class="responsive-img" alt="玩转OpenWrt系列——ShadowSocksR Plus+">
+                        <img src="https://www.bing.com/th?id=A70801551b14d73cb708e57b1d971dea0&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM" class="responsive-img" alt="树莓派安装泰拉瑞亚服务器并使用frp穿透">
                         
-                        <span class="card-title">玩转OpenWrt系列——ShadowSocksR Plus+</span>
+                        <span class="card-title">树莓派安装泰拉瑞亚服务器并使用frp穿透</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -727,7 +680,7 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-26
                             </span>
                         <span class="publish-author">
                             
@@ -737,8 +690,8 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                                     experiment
                                 </a>
                             
-                            <a href="/categories/openwrt/" class="post-category">
-                                    openwrt
+                            <a href="/categories/raspberry-pi/" class="post-category">
+                                    raspberry pi
                                 </a>
                             
                             
@@ -748,12 +701,16 @@ remote_port <span class="token operator">=</span> <span class="token number">601
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/openwrt/">
-                        <span class="chip bg-color">openwrt</span>
+                    <a href="/tags/raspberry-pi/">
+                        <span class="chip bg-color">raspberry pi</span>
                     </a>
                     
-                    <a href="/tags/shadowsocksr-plus/">
-                        <span class="chip bg-color">shadowsocksr plus+</span>
+                    <a href="/tags/frp/">
+                        <span class="chip bg-color">frp</span>
+                    </a>
+                    
+                    <a href="/tags/game/">
+                        <span class="chip bg-color">game</span>
                     </a>
                     
                 </div>

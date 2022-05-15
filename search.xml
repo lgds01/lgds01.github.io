@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>使用N2N连接不同内网主机全流程</title>
+      <link href="/shi-yong-n2n-lian-jie-bu-tong-nei-wang-zhu-ji-quan-liu-cheng/2022/05/15/"/>
+      <url>/shi-yong-n2n-lian-jie-bu-tong-nei-wang-zhu-ji-quan-liu-cheng/2022/05/15/</url>
+      
+        <content type="html"><![CDATA[<h1 id="使用-N2N-连接不同内网主机全流程"><a href="#使用-N2N-连接不同内网主机全流程" class="headerlink" title="使用 N2N 连接不同内网主机全流程"></a>使用 N2N 连接不同内网主机全流程</h1><h2 id="n2n-原理"><a href="#n2n-原理" class="headerlink" title="n2n 原理"></a>n2n 原理</h2><p>n2n 有两种节点，分别为超级节点(super node)和边缘节点(edge node)。</p><ul><li>超级节点：它允许边缘节点宣布和发现其他节点。它必须有一个可在 Internet 上公开访问的端口(<strong>具有公网 IP</strong>)。</li><li>边缘节点：将成为虚拟网络一部分的节点</li></ul><p>n2n 中多个边缘节点之间共享的虚拟网络称为社区。单个超级节点可以中继多个社区，一台计算机可以同时成为多个社区的一部分。边缘节点可以使用加密密钥来加密其社区内的数据包。</p><p>当第一次连接时，需要通过超级节点来建立边缘节点之间的点对点连接，当这不可能时，将<strong>通过超级节点中继数据包</strong>。</p><p>根据官方的说明，可能由于特殊的 NAT 设备导致不能进行点对点连接，而使用超级节点中继时，超级节点的带宽就决定了传输速率。</p><h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><p>n2n 目前有三种版本,并且官方不提供二进制文件，需要自己进行编译。三种版本之间不可混用，即要使用相同版本的 super node 和 edge node。</p><ul><li>v1: <a href="https://github.com/meyerd/n2n/tree/master/n2n_v1">https://github.com/meyerd/n2n/tree/master/n2n_v1</a> （版本号是 v.1.x.x）</li><li>v2: <a href="https://github.com/ntop/n2n">https://github.com/ntop/n2n</a> （版本号是 v.2.x.x）</li><li>v2s: <a href="https://github.com/meyerd/n2n/tree/master/n2n_v2">https://github.com/meyerd/n2n/tree/master/n2n_v2</a> （版本号是 v.2.1.0）德国大佬写的 n2n v2 分支，非官方版本。</li><li>v3: <a href="https://github.com/ntop/n2n">https://github.com/ntop/n2n</a> （版本号是 v.3.x.x) 官方正在维护</li></ul><p>此次使用 n2n v2 版本，因为这是官方版本，且一直在维护。使用<a href="https://github.com/lucktu/n2n">lucktu 编译的二进制文件</a></p><h2 id="服务端设置"><a href="#服务端设置" class="headerlink" title="服务端设置"></a>服务端设置</h2><p>服务端为 ubuntu 环境。使用如下命令搭建 super node。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 下载n2n_v2_linux_x64版本</span><span class="token function">wget</span> https://github.com/lucktu/n2n/blob/master/Linux/n2n_v3_linux_x64_v3.1.1-16_r1200_all_by_heiye.rar<span class="token comment"># 解压</span><span class="token function">unzip</span> n2n_v2_linux_x64_v2.7.0_r525_all_by_heiye.zip<span class="token comment"># 增加可执行权限</span><span class="token builtin class-name">cd</span> n2n_v2_linux_x64_v2.7.0_r525_Bstatic_by_heiye/<span class="token function">chmod</span> u+x edge supernode<span class="token comment"># 服务端监听6789端口</span>supernode -l <span class="token number">6789</span><span class="token comment"># 服务端也当作客户端使用，将服务端也加入虚拟网络(可选)</span>edge -a <span class="token number">10.0</span>.0.10 -c <span class="token builtin class-name">test</span> -k <span class="token number">12345</span> -l 超级节点公网IP:6789 -v -f<span class="token comment"># -a 虚拟网络ip</span><span class="token comment"># -c 社区名称</span><span class="token comment"># -k 社区密钥</span><span class="token comment"># -l 超级节点公网ip:port</span><span class="token comment"># -v -f 可视化debug输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>记得打开服务器的 6789 端口。</p><h2 id="windows-客户端设置"><a href="#windows-客户端设置" class="headerlink" title="windows 客户端设置"></a>windows 客户端设置</h2><p>使用<a href="https://github.com/dwj0/n2n-gui-for-windows">dwj0 编写的 gui 软件</a>简化操作。根据 readme 操作即可。<br>注意点：<br>开启后使用<code>ipconfig/all</code>查看是否有如下配置<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202205152019417.png"><br>同时网络管理中心也多出来对应的虚拟网卡<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202205152019410.png"><br>如果发现网卡地址和填写的虚拟网络 ip 地址不一样，则需要到网络管理中心进行如下操作：<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/mac_img/202205152023686.jpg"></p><h2 id="命令行客户端设置"><a href="#命令行客户端设置" class="headerlink" title="命令行客户端设置"></a>命令行客户端设置</h2><p>需要下载<a href="https://github.com/lucktu/n2n/blob/master/Linux/n2n_v3_linux_x64_v3.1.1-16_r1200_all_by_heiye.rar">lucktu 编译的二进制文件</a>，使用如下命令</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">edge -a <span class="token number">10.0</span>.0.14 -c <span class="token builtin class-name">test</span> -k <span class="token number">12345</span> -l 超级节点公网IP:6789 -v -f<span class="token comment"># -a 虚拟网络ip</span><span class="token comment"># -c 社区名称</span><span class="token comment"># -k 社区密钥</span><span class="token comment"># -l 超级节点公网ip:port</span><span class="token comment"># -v -f 可视化debug输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="验证是否成功连接"><a href="#验证是否成功连接" class="headerlink" title="验证是否成功连接"></a>验证是否成功连接</h2><p>使用<code>ping 虚拟网络ip</code>命令即可，若能 ping 通，则两台主机之间联通。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> n2n </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>树莓派安装泰拉瑞亚服务器并使用frp穿透</title>
       <link href="/shu-mei-pai-an-zhuang-tai-la-rui-ya-fu-wu-qi-bing-shi-yong-frp-chuan-tou/2022/02/26/"/>
       <url>/shu-mei-pai-an-zhuang-tai-la-rui-ya-fu-wu-qi-bing-shi-yong-frp-chuan-tou/2022/02/26/</url>
