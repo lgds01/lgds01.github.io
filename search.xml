@@ -412,9 +412,9 @@
       
         <tags>
             
-            <tag> flask </tag>
-            
             <tag> nginx </tag>
+            
+            <tag> flask </tag>
             
         </tags>
       
