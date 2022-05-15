@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>玩转OpenWrt系列</title>
+      <link href="/wan-zhuan-openwrt-xi-lie/2022/05/16/"/>
+      <url>/wan-zhuan-openwrt-xi-lie/2022/05/16/</url>
+      
+        <content type="html"><![CDATA[<h1 id="玩转-OpenWrt-系列"><a href="#玩转-OpenWrt-系列" class="headerlink" title="玩转 OpenWrt 系列"></a>玩转 OpenWrt 系列</h1><p>此系列用于记录探索 OpenWrt 的过程，也作为以后快速异地部署的教程。</p><p>目前有如下文章：<br><a href="https://lgds01.github.io/wan-zhuan-openwrt-xi-lie-pang-lu-you-she-zhi/2022/02/20/">玩转 OpenWrt 系列——旁路由设置</a><br><a href="https://lgds01.github.io/wan-zhuan-openwrt-xi-lie-passwall/2022/02/22/">玩转 OpenWrt 系列——PassWall</a><br><a href="https://lgds01.github.io/wan-zhuan-openwrt-xi-lie-smartdns/2022/02/24/">玩转 OpenWrt 系列——SmartDNS</a><br><a href="https://lgds01.github.io/wan-zhuan-openwrt-xi-lie-shadowsocksr-plus/2022/02/25/">玩转 OpenWrt 系列——ShadowSocksR Plus+</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+          <category> openwrt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> openwrt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用N2N连接不同内网主机全流程</title>
       <link href="/shi-yong-n2n-lian-jie-bu-tong-nei-wang-zhu-ji-quan-liu-cheng/2022/05/15/"/>
       <url>/shi-yong-n2n-lian-jie-bu-tong-nei-wang-zhu-ji-quan-liu-cheng/2022/05/15/</url>
@@ -296,9 +323,9 @@
       
         <tags>
             
-            <tag> mongoose </tag>
-            
             <tag> docker </tag>
+            
+            <tag> mongoose </tag>
             
         </tags>
       
@@ -437,9 +464,9 @@
       
         <tags>
             
-            <tag> nginx </tag>
-            
             <tag> flask </tag>
+            
+            <tag> nginx </tag>
             
         </tags>
       
