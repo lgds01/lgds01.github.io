@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: openwrt, 乐观的神的博客">
-    <meta name="description" content="乐观的神的博客">
+    <meta name="keywords" content="MQTT之旅——服务端(EMQX), 乐观的神的博客">
+    <meta name="description" content="MQTT 之旅——服务端(EMQX)EMQX 介绍EMQX (Erlang&amp;#x2F;Enterprise&amp;#x2F;Elastic MQTT Broker) 是基于 Erlang&amp;#x2F;OTP 平台开发的开源物联网 MQTT 消息服务">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
 
     
 
-    <title>分类: openwrt | 乐观的神的博客</title>
+    <title>MQTT之旅——服务端(EMQX) | 乐观的神的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -261,402 +261,586 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                To Be Optimistic
-                
-            </div>
+    
 
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "从来没有真正的绝境, 只有心灵的迷途",
-                            
-                                "Never really desperate, only the lost of the soul",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.emqx.io/images/logo.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MQTT之旅——服务端(EMQX)</h1>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/mqtt/">
+                                <span class="chip bg-color">mqtt</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/experiment/" class="post-category">
+                                experiment
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-06-25
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-06-25
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    563
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    2 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="MQTT-之旅——服务端-EMQX"><a href="#MQTT-之旅——服务端-EMQX" class="headerlink" title="MQTT 之旅——服务端(EMQX)"></a>MQTT 之旅——服务端(EMQX)</h1><h2 id="EMQX-介绍"><a href="#EMQX-介绍" class="headerlink" title="EMQX 介绍"></a>EMQX 介绍</h2><p>EMQX (Erlang&#x2F;Enterprise&#x2F;Elastic MQTT Broker) 是基于 Erlang&#x2F;OTP 平台开发的开源物联网 MQTT 消息服务器。</p>
+<p>Erlang&#x2F;OTP 是出色的软实时 (Soft-Realtime)、低延时 (Low-Latency)、分布式 (Distributed)的语言平台。</p>
+<p>MQTT 是轻量的 (Lightweight)、发布订阅模式 (PubSub) 的物联网消息协议。</p>
+<p>EMQX 设计目标是实现高可靠，并支持承载海量物联网终端的 MQTT 连接，支持在海量物联网设备间低延时消息路由:</p>
+<ol>
+<li>稳定承载大规模的 MQTT 客户端连接，单服务器节点支持 200 万连接。</li>
+<li>分布式节点集群，快速低延时的消息路由。</li>
+<li>消息服务器内扩展，支持定制多种认证方式、高效存储消息到后端数据库。</li>
+<li>完整物联网协议支持，MQTT、MQTT-SN、CoAP、LwM2M、WebSocket 或私有协议支持。</li>
+</ol>
+<p>以上是<a target="_blank" rel="noopener" href="https://www.emqx.io/zh">EMQX 官网</a>的介绍。作为一名普通的 DIY 爱好者，它的以下优点吸引了我：</p>
+<ul>
+<li>开源免费</li>
+<li>有 dashboard 能够快捷的使用图形化界面进行配置</li>
+<li>支持快速的私有化部署</li>
+<li>有完善的权限控制</li>
+<li>开发团队十分活跃，项目不至于有 bug 修很久</li>
+</ul>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p>服务器是腾讯云的 ubuntu 20.04LTS 系统<br>参照<a target="_blank" rel="noopener" href="https://www.emqx.io/docs/zh/v4.4/getting-started/install.html">官网的安装说明</a>，使用 docker 镜像的方式快速安装，省去配置环境的步骤。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull emqx/emqx:v4.0.0
+<span class="token function">docker</span> run -d --name emqx -p <span class="token number">1883</span>:1883 -p <span class="token number">8081</span>:8081 -p <span class="token number">8083</span>:8083 -p <span class="token number">8883</span>:8883 -p <span class="token number">8084</span>:8084 -p <span class="token number">18083</span>:18083 emqx/emqx:v4.0.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>端口说明：</p>
+<ul>
+<li>1883 MQTT 协议端口</li>
+<li>8081 HTTP API 端口</li>
+<li>8083,8084 MQTT&#x2F;WebSocket 端口</li>
+<li>18083 Dashboard 管理控制台端口</li>
+<li>8883 MQTT&#x2F;SSL 端口</li>
+</ul>
+<p>PS:<strong>记得去腾讯云控制台放行上述端口</strong></p>
+<p>使用浏览器打开 http:&#x2F;&#x2F;&lt;服务器 ip&gt;:18083，进入 dashboard，在设置中将 language 改为简体中文。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>使用 MQTT 客户端工具，这里使用<a target="_blank" rel="noopener" href="https://mqttx.app/zh">MQTTX</a>作为演示。</p>
+<p>首先新建一个连接，填写名称和服务器地址<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/20220625012956.png" alt="20220625012956"></p>
+<p>然后订阅一个主题，填写主题名称<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/20220625013236.png" alt="20220625013236"></p>
+<p>最后发布一个该主题的消息，接受消息<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/20220625013356.png" alt="20220625013356"></p>
+<p>成功订阅主题并发送该主题消息。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">乐观的神</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://lgds01.github.io/mqtt-zhi-lu-fu-wu-duan-emqx/2022/06/25/">https://lgds01.github.io/mqtt-zhi-lu-fu-wu-duan-emqx/2022/06/25/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">乐观的神</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/mqtt/">
+                                    <span class="chip bg-color">mqtt</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/mqtt-zhi-lu-fu-wu-duan-emqx/2022/06/25/">
+                    <div class="card-image">
+                        
+                        <img src="https://www.emqx.io/images/logo.png" class="responsive-img" alt="MQTT之旅——服务端(EMQX)">
+                        
+                        <span class="card-title">MQTT之旅——服务端(EMQX)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/experiment/" class="post-category">
+                                    experiment
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mqtt/">
+                        <span class="chip bg-color">mqtt</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/python-kong-zhi-xbox-series-x-shou-bing/2022/06/13/">
+                    <div class="card-image">
+                        
+                        <img src="https://en.wikipedia.org/wiki/File:Xbox_Series_S_with_controller.jpg" class="responsive-img" alt="python控制Xbox Series X手柄">
+                        
+                        <span class="card-title">python控制Xbox Series X手柄</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/experiment/" class="post-category">
+                                    experiment
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/xbox/">
+                        <span class="chip bg-color">xbox</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
 </div>
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 乐观的神的博客<br />'
+            + '文章作者: 乐观的神<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
 </script>
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
     </div>
-</div>
-
-<main class="content">
-
-    
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/experiment/" title="experiment: 19">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">experiment
-                        <span class="tag-length">19</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/notes/" title="notes: 10">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">notes
-                        <span class="tag-length">10</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/bug/" title="bug: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">bug
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/raspberry-pi/" title="raspberry pi: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">raspberry pi
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/openwrt/" title="openwrt: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #FEF9E7;">openwrt
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E6%9D%82%E8%B0%88/" title="杂谈: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">杂谈
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-            </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
         </div>
     </div>
 </div>
 
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/wan-zhuan-openwrt-xi-lie/2022/05/16/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://www.bing.com/th?id=A1ba231a56ad20209624792bc0ced04d5&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM" class="responsive-img" alt="玩转OpenWrt系列">
-                            
-                            <span class="card-title">玩转OpenWrt系列</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                玩转 OpenWrt 系列此系列用于记录探索 OpenWrt 的过程，也作为以后快速异地部署的教程。
-目前有如下文章：玩转 OpenWrt 系列——旁路由设置玩转 OpenWrt 系列——PassWall玩转 OpenWrt 系列——Sma
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/experiment/" class="post-category">
-                                    experiment
-                                </a>
-                                
-                                <a href="/categories/openwrt/" class="post-category">
-                                    openwrt
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/openwrt/">
-                            <span class="chip bg-color">openwrt</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/wan-zhuan-openwrt-xi-lie-shadowsocksr-plus/2022/02/25/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://www.bing.com/th?id=A1ba231a56ad20209624792bc0ced04d5&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM" class="responsive-img" alt="玩转OpenWrt系列——ShadowSocksR Plus+">
-                            
-                            <span class="card-title">玩转OpenWrt系列——ShadowSocksR Plus+</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                玩转OpenWrt系列——ShadowSocksR Plus+一、ShadowSocksR Plus+ShadowSocksR Plus+别名酸酸乳Plus，支持 SS&#x2F;SSR&#x2F;V2RAY&#x2F;XRAY&#x2F;
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/experiment/" class="post-category">
-                                    experiment
-                                </a>
-                                
-                                <a href="/categories/openwrt/" class="post-category">
-                                    openwrt
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/openwrt/">
-                            <span class="chip bg-color">openwrt</span>
-                        </a>
-                        
-                        <a href="/tags/shadowsocksr-plus/">
-                            <span class="chip bg-color">shadowsocksr plus+</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/wan-zhuan-openwrt-xi-lie-smartdns/2022/02/24/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://www.bing.com/th?id=A1ba231a56ad20209624792bc0ced04d5&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM" class="responsive-img" alt="玩转OpenWrt系列——SmartDNS">
-                            
-                            <span class="card-title">玩转OpenWrt系列——SmartDNS</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                玩转OpenWrt系列——SmartDNS一、DNSDNS即为域名解析系统，能够将域名解析为IP地址，从而访问服务器。
-通常情况下如果在设备或者路由器上未指定 DNS 服务器则默认使用运营商的DNS解析，也就是自动获取DNS服务器。但是这些
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/experiment/" class="post-category">
-                                    experiment
-                                </a>
-                                
-                                <a href="/categories/openwrt/" class="post-category">
-                                    openwrt
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/openwrt/">
-                            <span class="chip bg-color">openwrt</span>
-                        </a>
-                        
-                        <a href="/tags/smartdns/">
-                            <span class="chip bg-color">smartdns</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/wan-zhuan-openwrt-xi-lie-passwall/2022/02/22/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://www.bing.com/th?id=A1ba231a56ad20209624792bc0ced04d5&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM" class="responsive-img" alt="玩转OpenWrt系列——PassWall">
-                            
-                            <span class="card-title">玩转OpenWrt系列——PassWall</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                玩转OpenWrt系列——PassWall一、PassWall作用及好处软路由一个很重要的功能就是能够支持局域网内科学上网。OpenWrt拥有很多插件能够满足我们科学上网的需求，比如PassWall、OpenClash、SSR-Plus等，
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/experiment/" class="post-category">
-                                    experiment
-                                </a>
-                                
-                                <a href="/categories/openwrt/" class="post-category">
-                                    openwrt
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/openwrt/">
-                            <span class="chip bg-color">openwrt</span>
-                        </a>
-                        
-                        <a href="/tags/passwall/">
-                            <span class="chip bg-color">passwall</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/wan-zhuan-openwrt-xi-lie-pang-lu-you-she-zhi/2022/02/20/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://www.bing.com/th?id=A1ba231a56ad20209624792bc0ced04d5&w=188&h=132&c=7&o=6&dpr=2&pid=SANGAM" class="responsive-img" alt="玩转OpenWrt系列——旁路由设置">
-                            
-                            <span class="card-title">玩转OpenWrt系列——旁路由设置</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                玩转 OpenWrt 系列——旁路由设置一、旁路由旁路由正式名称为旁路网关，是指挂靠在主路由网络下的旁系网络，分担了一部分路由器的功能。
-旁路由作用：
-
-主路由硬件配置过低，无法承当过大压力时，可由旁路由分担压力，优化网络体验
-在不影响现有
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/experiment/" class="post-category">
-                                    experiment
-                                </a>
-                                
-                                <a href="/categories/openwrt/" class="post-category">
-                                    openwrt
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/OpenWrt/">
-                            <span class="chip bg-color">OpenWrt</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%97%81%E8%B7%AF%E7%94%B1/">
-                            <span class="chip bg-color">旁路由</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
 </main>
 
 

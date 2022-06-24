@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>MQTT之旅——服务端(EMQX)</title>
+      <link href="/mqtt-zhi-lu-fu-wu-duan-emqx/2022/06/25/"/>
+      <url>/mqtt-zhi-lu-fu-wu-duan-emqx/2022/06/25/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MQTT-之旅——服务端-EMQX"><a href="#MQTT-之旅——服务端-EMQX" class="headerlink" title="MQTT 之旅——服务端(EMQX)"></a>MQTT 之旅——服务端(EMQX)</h1><h2 id="EMQX-介绍"><a href="#EMQX-介绍" class="headerlink" title="EMQX 介绍"></a>EMQX 介绍</h2><p>EMQX (Erlang&#x2F;Enterprise&#x2F;Elastic MQTT Broker) 是基于 Erlang&#x2F;OTP 平台开发的开源物联网 MQTT 消息服务器。</p><p>Erlang&#x2F;OTP 是出色的软实时 (Soft-Realtime)、低延时 (Low-Latency)、分布式 (Distributed)的语言平台。</p><p>MQTT 是轻量的 (Lightweight)、发布订阅模式 (PubSub) 的物联网消息协议。</p><p>EMQX 设计目标是实现高可靠，并支持承载海量物联网终端的 MQTT 连接，支持在海量物联网设备间低延时消息路由:</p><ol><li>稳定承载大规模的 MQTT 客户端连接，单服务器节点支持 200 万连接。</li><li>分布式节点集群，快速低延时的消息路由。</li><li>消息服务器内扩展，支持定制多种认证方式、高效存储消息到后端数据库。</li><li>完整物联网协议支持，MQTT、MQTT-SN、CoAP、LwM2M、WebSocket 或私有协议支持。</li></ol><p>以上是<a href="https://www.emqx.io/zh">EMQX 官网</a>的介绍。作为一名普通的 DIY 爱好者，它的以下优点吸引了我：</p><ul><li>开源免费</li><li>有 dashboard 能够快捷的使用图形化界面进行配置</li><li>支持快速的私有化部署</li><li>有完善的权限控制</li><li>开发团队十分活跃，项目不至于有 bug 修很久</li></ul><h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p>服务器是腾讯云的 ubuntu 20.04LTS 系统<br>参照<a href="https://www.emqx.io/docs/zh/v4.4/getting-started/install.html">官网的安装说明</a>，使用 docker 镜像的方式快速安装，省去配置环境的步骤。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull emqx/emqx:v4.0.0<span class="token function">docker</span> run -d --name emqx -p <span class="token number">1883</span>:1883 -p <span class="token number">8081</span>:8081 -p <span class="token number">8083</span>:8083 -p <span class="token number">8883</span>:8883 -p <span class="token number">8084</span>:8084 -p <span class="token number">18083</span>:18083 emqx/emqx:v4.0.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>端口说明：</p><ul><li>1883 MQTT 协议端口</li><li>8081 HTTP API 端口</li><li>8083,8084 MQTT&#x2F;WebSocket 端口</li><li>18083 Dashboard 管理控制台端口</li><li>8883 MQTT&#x2F;SSL 端口</li></ul><p>PS:<strong>记得去腾讯云控制台放行上述端口</strong></p><p>使用浏览器打开 http:&#x2F;&#x2F;&lt;服务器 ip&gt;:18083，进入 dashboard，在设置中将 language 改为简体中文。</p><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>使用 MQTT 客户端工具，这里使用<a href="https://mqttx.app/zh">MQTTX</a>作为演示。</p><p>首先新建一个连接，填写名称和服务器地址<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/20220625012956.png" alt="20220625012956"></p><p>然后订阅一个主题，填写主题名称<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/20220625013236.png" alt="20220625013236"></p><p>最后发布一个该主题的消息，接受消息<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/20220625013356.png" alt="20220625013356"></p><p>成功订阅主题并发送该主题消息。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> experiment </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mqtt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python控制Xbox Series X手柄</title>
       <link href="/python-kong-zhi-xbox-series-x-shou-bing/2022/06/13/"/>
       <url>/python-kong-zhi-xbox-series-x-shou-bing/2022/06/13/</url>
