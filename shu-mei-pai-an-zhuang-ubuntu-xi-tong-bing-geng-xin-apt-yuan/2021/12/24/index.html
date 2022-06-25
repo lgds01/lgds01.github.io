@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="树莓派安装ubuntu系统并更新apt源, 乐观的神的博客">
-    <meta name="description" content="树莓派安装ubuntu系统并更新apt源1.下载ubuntu系统Ubuntu 20.04 64bit for Raspberry Pi下载地址
-2.使用镜像烧录工具将系统写入tf卡使用balenaEtcher将下载好的系统写入tf卡
-ps：">
+    <meta name="description" content="树莓派安装 ubuntu 系统并更新 apt 源1.下载 ubuntu 系统Ubuntu 20.04 64bit for Raspberry Pi 下载地址
+2.使用镜像烧录工具将系统写入 tf 卡使用 balenaEtcher 将下载好的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -428,21 +427,21 @@ ps：">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-15
+                    2022-06-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    437
+                    450
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -460,10 +459,10 @@ ps：">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="树莓派安装ubuntu系统并更新apt源"><a href="#树莓派安装ubuntu系统并更新apt源" class="headerlink" title="树莓派安装ubuntu系统并更新apt源"></a>树莓派安装ubuntu系统并更新apt源</h1><h2 id="1-下载ubuntu系统"><a href="#1-下载ubuntu系统" class="headerlink" title="1.下载ubuntu系统"></a>1.下载ubuntu系统</h2><p><a target="_blank" rel="noopener" href="https://ubuntu.com/download/raspberry-pi/thank-you?version=20.04.3&architecture=server-arm64+raspi#:~:text=If%20it%20doesn%E2%80%99t%2C-,download%20now,-.">Ubuntu 20.04 64bit for Raspberry Pi下载地址</a></p>
-<h2 id="2-使用镜像烧录工具将系统写入tf卡"><a href="#2-使用镜像烧录工具将系统写入tf卡" class="headerlink" title="2.使用镜像烧录工具将系统写入tf卡"></a>2.使用镜像烧录工具将系统写入tf卡</h2><p>使用balenaEtcher将下载好的系统写入tf卡</p>
+                <h1 id="树莓派安装-ubuntu-系统并更新-apt-源"><a href="#树莓派安装-ubuntu-系统并更新-apt-源" class="headerlink" title="树莓派安装 ubuntu 系统并更新 apt 源"></a>树莓派安装 ubuntu 系统并更新 apt 源</h1><h2 id="1-下载-ubuntu-系统"><a href="#1-下载-ubuntu-系统" class="headerlink" title="1.下载 ubuntu 系统"></a>1.下载 ubuntu 系统</h2><p><a target="_blank" rel="noopener" href="https://ubuntu.com/download/raspberry-pi/thank-you?version=20.04.3&architecture=server-arm64+raspi#:~:text=If%20it%20doesn%E2%80%99t%2C-,download%20now,-.">Ubuntu 20.04 64bit for Raspberry Pi 下载地址</a></p>
+<h2 id="2-使用镜像烧录工具将系统写入-tf-卡"><a href="#2-使用镜像烧录工具将系统写入-tf-卡" class="headerlink" title="2.使用镜像烧录工具将系统写入 tf 卡"></a>2.使用镜像烧录工具将系统写入 tf 卡</h2><p>使用 balenaEtcher 将下载好的系统写入 tf 卡</p>
 <p>ps：随意使用任何镜像烧录工具即可</p>
-<h2 id="3-设置网络"><a href="#3-设置网络" class="headerlink" title="3.设置网络"></a>3.设置网络</h2><p>编辑system-boot&#x2F;network-config文件</p>
+<h2 id="3-设置网络"><a href="#3-设置网络" class="headerlink" title="3.设置网络"></a>3.设置网络</h2><p>编辑 system-boot&#x2F;network-config 文件</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">version: <span class="token number">2</span>
 ethernets:
 eth0:
@@ -474,17 +473,18 @@ wifis:
   dhcp4: <span class="token boolean">true</span>
   optional: <span class="token boolean">true</span>
   access-points:
-    wiki-name:
+    <span class="token string">"wifi-name"</span><span class="token builtin class-name">:</span>
       password: <span class="token string">"wifi-password"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>将wifi-name与wifi-password更改为自己的wifi名称与wifi密码</p>
-<h2 id="4-启动raspberry-pi并使用ssh连接"><a href="#4-启动raspberry-pi并使用ssh连接" class="headerlink" title="4.启动raspberry pi并使用ssh连接"></a>4.启动raspberry pi并使用ssh连接</h2><p>首先需要在路由器管理后台查看<strong>名称为ubuntu</strong>设备的ip地址</p>
-<p>然后使用ssh连接</p>
+<p><a target="_blank" rel="noopener" href="https://pic1.zhimg.com/80/v2-14e3f5052c0c3bde03e4b5a89bc3d528_1440w.jpg"></a></p>
+<p>将 wifi-name 与 wifi-password 更改为自己的 wifi 名称与 wifi 密码</p>
+<h2 id="4-启动-raspberry-pi-并使用-ssh-连接"><a href="#4-启动-raspberry-pi-并使用-ssh-连接" class="headerlink" title="4.启动 raspberry pi 并使用 ssh 连接"></a>4.启动 raspberry pi 并使用 ssh 连接</h2><p>首先需要在路由器管理后台查看<strong>名称为 ubuntu</strong>设备的 ip 地址</p>
+<p>然后使用 ssh 连接</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> ubuntu@ip_addr<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong>默认密码为ubuntu</strong>，第一次登录会强制更改密码</p>
-<h2 id="5-更新apt源"><a href="#5-更新apt源" class="headerlink" title="5.更新apt源"></a>5.更新apt源</h2><p>参考<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/">清华开源软件镜像站使用帮助</a></p>
-<p>由于raspberry pi是arm架构，因此需要<strong>使用Ubuntu Ports镜像</strong>（包含 arm64 armhf ppc64el riscv64 s390x 架构的软件包）</p>
+<p><strong>默认密码为 ubuntu</strong>，第一次登录会强制更改密码</p>
+<h2 id="5-更新-apt-源"><a href="#5-更新-apt-源" class="headerlink" title="5.更新 apt 源"></a>5.更新 apt 源</h2><p>参考<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/">清华开源软件镜像站使用帮助</a></p>
+<p>由于 raspberry pi 是 arm 架构，因此需要<strong>使用 Ubuntu Ports 镜像</strong>（包含 arm64 armhf ppc64el riscv64 s390x 架构的软件包）</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span>
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
@@ -498,9 +498,9 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restr
 <li><p>若出现<code>gpg: keyserver receive failed: Server indicated a failure</code>错误，则使用下述命令</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 5DC22404A6F9F1CA<span class="token punctuation">(</span>报错的公钥值<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p>若出现CA认证错误，则将所有的https改为http</p>
+<li><p>若出现 CA 认证错误，则将所有的 https 改为 http</p>
 </li>
-<li><p>若以上问题没有解决，可尝试更改dns解析</p>
+<li><p>若以上问题没有解决，可尝试更改 dns 解析</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">vim</span> /etc/resolv.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>更改为以下内容：</p>
