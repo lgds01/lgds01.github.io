@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>玩转OpenWrt系列——docker中安装并配置旁路由</title>
+      <title>玩转OpenWrt系列——docker中安装并配置旁路网关</title>
       <link href="/wan-zhuan-openwrt-xi-lie-docker-zhong-an-zhuang-bing-pei-zhi-pang-lu-you/2022/06/26/"/>
       <url>/wan-zhuan-openwrt-xi-lie-docker-zhong-an-zhuang-bing-pei-zhi-pang-lu-you/2022/06/26/</url>
       
-        <content type="html"><![CDATA[<h1 id="玩转-OpenWrt-系列——docker-中安装并配置旁路由"><a href="#玩转-OpenWrt-系列——docker-中安装并配置旁路由" class="headerlink" title="玩转 OpenWrt 系列——docker 中安装并配置旁路由"></a>玩转 OpenWrt 系列——docker 中安装并配置旁路由</h1><p>系统环境为 Raspbian(64bit)，使用 docker 镜像为<a href="https://github.com/SuLingGG/OpenWrt-Docker">SuLingGG&#x2F;OpenWrt-Docker</a></p><p>跟着<a href="https://mlapp.cn/376.html">镜像教程</a>配置即可，里面步骤十分详细。</p><p>我的网络布局参考：<br>路由器：192.168.2.1<br>openwrt：192.168.2.2<br>树莓派：192.168.2.3</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="玩转-OpenWrt-系列——docker-中安装并配置旁路网关"><a href="#玩转-OpenWrt-系列——docker-中安装并配置旁路网关" class="headerlink" title="玩转 OpenWrt 系列——docker 中安装并配置旁路网关"></a>玩转 OpenWrt 系列——docker 中安装并配置旁路网关</h1><p>系统环境为 Raspbian(64bit)，使用 docker 镜像为<a href="https://github.com/SuLingGG/OpenWrt-Docker">SuLingGG&#x2F;OpenWrt-Docker</a></p><p>跟着<a href="https://mlapp.cn/376.html">镜像教程</a>配置即可，里面步骤十分详细。</p><p>我的网络布局参考：<br>路由器：192.168.2.1<br>openwrt：192.168.2.2<br>树莓派：192.168.2.3</p><h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ol><li>教程中将 lan 口设置为桥接，但是网关地址为该旁路网关的设备无法正常上网。<br>解决办法：网络-接口-lan-修改-物理设置-取消桥接接口选项<br><img src="https://img-1305492272.cos.ap-shanghai.myqcloud.com/20220626231640.png" alt="20220626231640"></li></ol>]]></content>
       
       
       <categories>
