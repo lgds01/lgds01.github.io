@@ -376,11 +376,11 @@
                 </a>
                 
                 
-                <a href="/tags/docker/" title="docker: 3">
+                <a href="/tags/docker/" title="docker: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="docker" style="background-color: #82E0AA;">docker
-                        <span class="tag-length">3</span>
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -457,11 +457,11 @@
                 </a>
                 
                 
-                <a href="/tags/raspberry-pi/" title="raspberry pi: 3">
+                <a href="/tags/raspberry-pi/" title="raspberry pi: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="raspberry pi" style="background-color: #82E0AA;">raspberry pi
-                        <span class="tag-length">3</span>
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -493,11 +493,11 @@
                 </a>
                 
                 
-                <a href="/tags/openwrt/" title="openwrt: 4">
+                <a href="/tags/openwrt/" title="openwrt: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="openwrt" style="background-color: #F9EBEA;">openwrt
-                        <span class="tag-length">4</span>
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -970,7 +970,58 @@ $(function () {
 </body>
 
 </html>
-                  if (this.value.trim().length <= 0) {
+ass="tooltipped" target="_blank" data-tooltip="QQ联系我: 2641003418" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
                         return;
                     }
                     // perform local searching

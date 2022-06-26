@@ -426,7 +426,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-15
+                    2022-06-26
                 </div>
                 
 
@@ -458,13 +458,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="树莓派入门初体验"><a href="#树莓派入门初体验" class="headerlink" title="树莓派入门初体验"></a>树莓派入门初体验</h3><h4 id="1-准备的东西"><a href="#1-准备的东西" class="headerlink" title="1.准备的东西"></a>1.准备的东西</h4><p>树莓派的板子、16G以上的tf卡、读卡器、电源以及电脑（我使用Mac）</p>
-<h4 id="2-下载系统镜像并烧录"><a href="#2-下载系统镜像并烧录" class="headerlink" title="2.下载系统镜像并烧录"></a>2.下载系统镜像并烧录</h4><p>去<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/operating-systems/">树莓派官网</a>下载镜像</p>
+                <h1 id="树莓派入门初体验"><a href="#树莓派入门初体验" class="headerlink" title="树莓派入门初体验"></a>树莓派入门初体验</h1><h2 id="1-准备的东西"><a href="#1-准备的东西" class="headerlink" title="1.准备的东西"></a>1.准备的东西</h2><p>树莓派的板子、16G以上的tf卡、读卡器、电源以及电脑（我使用Mac）</p>
+<h2 id="2-下载系统镜像并烧录"><a href="#2-下载系统镜像并烧录" class="headerlink" title="2.下载系统镜像并烧录"></a>2.下载系统镜像并烧录</h2><p>去<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/operating-systems/">树莓派官网</a>下载镜像</p>
 <img src="https://cdn.jsdelivr.net/gh/lgds-01/picture@main/uPic/image-20211117183102224.png" alt="image-20211117183102224" style="zoom:33%;" />
 
 <p>一共三种选择，其中前两种带有桌面，能够通过VNC连接到系统桌面。我喜欢命令行界面，因此下载第三个lite镜像（它是真的小）</p>
 <p>下载完成后使用balenaEtcher(Mac端)将镜像烧录到tf卡中</p>
-<h4 id="3-开启ssh登陆以及配置wifi"><a href="#3-开启ssh登陆以及配置wifi" class="headerlink" title="3.开启ssh登陆以及配置wifi"></a>3.开启ssh登陆以及配置wifi</h4><p>打开烧录完成的盘，进入boot目录，新建ssh文件<strong>（文件叫ssh，没有扩展名或后缀）</strong></p>
+<h2 id="3-开启ssh登陆以及配置wifi"><a href="#3-开启ssh登陆以及配置wifi" class="headerlink" title="3.开启ssh登陆以及配置wifi"></a>3.开启ssh登陆以及配置wifi</h2><p>打开烧录完成的盘，进入boot目录，新建ssh文件<strong>（文件叫ssh，没有扩展名或后缀）</strong></p>
 <p>继续在boot目录下新建<strong>wpa_supplicant.conf</strong>文件，编辑其内容如下</p>
 <pre class="line-numbers language-none"><code class="language-none">country&#x3D;CN
 ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev
@@ -493,7 +493,7 @@ scan_ssid&#x3D;1
 <li>key_mgmt是使用的加密协议，使用WEP加密填NONE，使用WPA&#x2F;WPA2加密填WPA-PSK（一般都是这个）</li>
 <li>scan_ssid:连接隐藏WiFi时需要指定该值为1</li>
 </ul>
-<h4 id="4-通过ssh连接到树莓派"><a href="#4-通过ssh连接到树莓派" class="headerlink" title="4.通过ssh连接到树莓派"></a>4.通过ssh连接到树莓派</h4><p>通过ssh连接需要知道树莓派的ip地址，下面有几种方式来连接</p>
+<h2 id="4-通过ssh连接到树莓派"><a href="#4-通过ssh连接到树莓派" class="headerlink" title="4.通过ssh连接到树莓派"></a>4.通过ssh连接到树莓派</h2><p>通过ssh连接需要知道树莓派的ip地址，下面有几种方式来连接</p>
 <ol>
 <li><p>使用<code>ssh pi@raspberrypi.local</code>命令连接，无需知道树莓派的ip地址，需要一定的扫描ip时间，要等一会</p>
 </li>
@@ -506,7 +506,7 @@ scan_ssid&#x3D;1
 </li>
 </ol>
 <p>找到ip后，利用命令<code>ssh pi@ip</code>登陆树莓派，默认密码为raspberry</p>
-<h4 id="5-更换apt源为清华源"><a href="#5-更换apt源为清华源" class="headerlink" title="5.更换apt源为清华源"></a>5.更换apt源为清华源</h4><p>按照<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">清华大学Raspbian 镜像使用帮助</a>，将&#x2F;etc&#x2F;apt&#x2F;sources.list更改为以下内容</p>
+<h2 id="5-更换apt源为清华源"><a href="#5-更换apt源为清华源" class="headerlink" title="5.更换apt源为清华源"></a>5.更换apt源为清华源</h2><p>按照<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">清华大学Raspbian 镜像使用帮助</a>，将&#x2F;etc&#x2F;apt&#x2F;sources.list更改为以下内容</p>
 <pre class="line-numbers language-none"><code class="language-none">deb http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; buster main non-free contrib rpi
 deb-src http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;raspbian&#x2F;raspbian&#x2F; buster main non-free contrib rpi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
