@@ -493,11 +493,11 @@
                 </a>
                 
                 
-                <a href="/tags/openwrt/" title="openwrt: 5">
+                <a href="/tags/openwrt/" title="openwrt: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="openwrt" style="background-color: #F9EBEA;">openwrt
-                        <span class="tag-length">5</span>
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -979,7 +979,48 @@ $(function () {
 </body>
 
 </html>
-ass="tooltipped" target="_blank" data-tooltip="QQ联系我: 2641003418" data-position="top" data-delay="50">
+ '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lgds01" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2641003418@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2641003418" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2641003418" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 
